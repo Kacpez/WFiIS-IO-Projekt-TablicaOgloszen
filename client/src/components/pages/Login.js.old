@@ -1,0 +1,59 @@
+import React, {useRef} from 'react';
+import '../../App.css';
+import { Button } from '../Button';
+import Footer from '../Footer';
+import '../Navbar.css';
+import './Login.css';
+
+
+
+
+
+export default function Login() {
+  
+  const loginRef = useRef(null);
+  const passwordRef = useRef(null);
+  
+  
+  return (
+    
+    <>
+<form class="box">
+  <h1>Logowanie</h1>
+  <input type="text" name="login" ref={loginRef} placeholder="Username" />
+  <input type="password" name="password"  ref={passwordRef} placeholder="Password" />
+  <input type="submit" name="" value="Zaloguj się" onClick={ () => {
+    console.log(loginRef.current.value, passwordRef.current.value);
+      let tempTab = [loginRef.current.value, passwordRef.current.value];
+      let dbRes = (fetch("http://localhost:5000/login", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(tempTab),
+          } )).then(
+      response => {
+        console.log(response);
+      }
+    )
+
+      // console.log(loginRef.current);
+      // console.log(passwordRef.current);
+
+      }
+    } />
+
+
+
+  <br></br>
+  <h2>Nie masz konta</h2>
+  <Button>Zarejestuj się</Button>
+</form>
+    
+        <Footer/>
+    </>
+        
+    
+  );
+
+}

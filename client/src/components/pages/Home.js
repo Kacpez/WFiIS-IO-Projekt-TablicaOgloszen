@@ -82,6 +82,15 @@ class Home extends React.Component{
   }
 
   async componentDidMount() {
+
+    // let dbbb = (await fetch("http://localhost:5000/testtest")).json().then(
+    //   response => {
+    //     console.log(response);
+    //   }
+    // )
+
+    
+
     document.getElementById("poszukuje").checked=true;
     document.getElementById("oddaje").checked=true;
     //taking database data from server
@@ -145,7 +154,6 @@ class Home extends React.Component{
             <Advert key={adv.id_notice} data={adv} buttons={["Zobacz ogłoszenie", "Rezerwuj"]} res={["noticedetails", "showAdvert","reserved", "reserveAdvert"]}/>
             ))}
           </div>
-       
       </>
     );
   

@@ -156,6 +156,8 @@ app.get("/details/:id", (req,res) => {
   
 })
 
+let tokens = []
+
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('index.ejs', { name: req.user.name });
 });
@@ -165,10 +167,23 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 });
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true
-}));
+}), function(req, res, next) {
+    console.log('\n------------------------------\n');
+    console.log(req.user);
+    console.log('\n------------------------------\n');
+    // user_data.push(req.user);
+    // req.flash('user', req.user);
+    // res.redirect('/');
+    // res.user = req.user;
+    res.status(200).json(req.user);
+    // return next({user: req.user});
+  });
+
+app.get('/testtest', (req, res) => {
+    res.status(200).send(user_data);
+});
 
 function executeQuery(query, values, callback) {
     return new Promise(function (fulfill, reject) {

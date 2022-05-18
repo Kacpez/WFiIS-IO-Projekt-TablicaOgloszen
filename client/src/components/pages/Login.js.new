@@ -1,0 +1,48 @@
+import React, { useState } from 'react';
+import '../../App.css';
+import { Button } from '../Button';
+import Footer from '../Footer';
+import '../Navbar.css';
+import './Login.css';
+import axios from "axios";
+
+function Login() {
+  const [username,setUsername] = useState("");
+  const [pass,setPass] = useState("");
+  
+
+  function test(event) {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAA");
+    console.log(username.value);
+    console.log(pass.value);
+  }
+
+  return (
+    
+    <>
+<form class="box">
+  <h1>Logowanie</h1>
+  <input type="text" name="login" placeholder="Username" value={username.value} onChange={setUsername} />
+  <input type="password" name="password" placeholder="Password" value={pass.value} onChange={setPass} />
+  <input type="button" name="" value="Zaloguj się" onClick={test} />
+  <br></br>
+  <h2>Nie masz konta</h2>
+  <Button>Zarejestuj się</Button>
+</form>
+	
+  
+    
+
+
+
+        <Footer/>
+    </>
+    	
+	
+  );
+  
+  
+  }	
+
+
+export default Login;
