@@ -22,6 +22,10 @@ import  ReservationDetail   from './components/pages/Reservation';
 import Reservation from './components/pages/Reservation';
 import { Advert } from './components/pages/Advert';
 import { LoginProvider } from './LoginContext';
+import { initDB } from "react-indexed-db";
+import { DBConfig } from "./DBConfig";
+
+initDB(DBConfig);
 
 function App()
 {
